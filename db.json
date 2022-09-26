@@ -1,0 +1,54 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "task": "Nyuci mobil",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "task": "Binar academy",
+      "complete": true
+    },
+    {
+      "id": 3,
+      "task": "Olahraga 10 menit",
+      "complete": false
+    },
+    {
+      "id": 4,
+      "task": "Sarapan sereal",
+      "complete": true
+    },
+    {
+      "id": 5,
+      "task": "Belanja harian",
+      "complete": true
+    },
+    {
+      "id": 6,
+      "task": "Ngeprint tugas",
+      "complete": true
+    },
+    {
+      "id": 7,
+      "task": "Bayar tagihan bulanan",
+      "complete": false
+    },
+    {
+      "id": 8,
+      "task": "Berangkat kuliah",
+      "complete": true
+    },
+    {
+      "id": 9,
+      "task": "Membaca koran",
+      "complete": false
+    },
+    {
+      "id": 10,
+      "task": "Bermain Game Online",
+      "complete": true
+    }
+  ]
+}
