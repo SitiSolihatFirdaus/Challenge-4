@@ -116,6 +116,40 @@ function TodoSearch() {
         )
     };
     
+    const handleDeleteDone = () => {
+        Promise.all(
+            todos.filter(e => e.complete).map(async ({ id }) => {
+                await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
+                    method: "DELETE", 
+                }
+                )
+                .then(async (res) => {
+                    return res;
+                })
+                .then((data) => {
+                    return data.status;
+                });
+                })
+        )
+    };
+
+    const handleDeleteAll = () => {
+        Promise.all(
+            todos.map(async ({ id }) => {
+                await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
+                    method: "DELETE",
+                }
+            )
+            .then(async (res) => {
+                return res;
+            })
+            .then((data) => {
+                return data.status;
+            });
+            })
+        );
+    }
+    
 
     return (
         <div>
@@ -147,10 +181,7 @@ function TodoSearch() {
                     <button className={style.button5} onClick={() => handleFilter("false")}>Todo</button>
                 </div>
 
-                {todos.length === 0 ? (
-                    <p className={style.loading}>Loading ...</p>
-                ): (
-                todos.map((data)=> (
+                    {todos.map((data)=> (
                     <li className={style.li}>
                         <p onClick={() => toggleComplete(data)} className={data.complete ? style.textComplete : style.text}>{data.task}</p>
                         <div className={style.icon}>
@@ -163,45 +194,14 @@ function TodoSearch() {
                             <button className={style.delete2} onClick={()=> Delete(data.id)}><MdDelete /></button>  
                         </div> 
                     </li>
-                ))
-                )}
+                ))}
                 
                 <div className={style.buttonDelete}>
                     <button className={style.button6} 
-                    onClick={() => {
-                    Promise.all(
-                        todos.filter(e => e.complete).map(async ({ id }) => {
-                            await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
-                                method: "DELETE", 
-                            }
-                            )
-                            .then(async (res) => {
-                                return res;
-                            })
-                            .then((data) => {
-                                return data.status;
-                            });
-                            })
-                    )
-                    }}>Delete Done Task</button>
+                    onClick={handleDeleteDone}>Delete Done Task</button>
 
                     <button className={style.button7} 
-                    onClick={() => {
-                        Promise.all(
-                            todos.map(async ({ id }) => {
-                                await fetch(`https://fake-api-coba.herokuapp.com/todos/${id}`, {
-                                    method: "DELETE",
-                                }
-                            )
-                            .then(async (res) => {
-                                return res;
-                            })
-                            .then((data) => {
-                                return data.status;
-                            });
-                            })
-                        );
-                    }}>Delete All Task</button>
+                    onClick={handleDeleteAll}>Delete All Task</button>
                 </div>
             </div>
         </div>
